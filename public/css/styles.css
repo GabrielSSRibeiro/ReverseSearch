@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: rgb(49, 138, 226);
 }
 
@@ -66,4 +66,223 @@ nav{
 .form-button {
     padding: 5px;
     width: 80px;
+} */
+
+/* ---------------------------------------------------------------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #455fe1 0%, #4d87c9 100%);
+  }
+  
+  .fieldInput {
+    width: 225px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    color: #686868;
+    padding: 0 5px;
+  }
+  
+  .whiteButton {
+    width: 140px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    background: #ffffff;
+    color: #686868;
+    outline: none;
+    transition: 0.2s;
+  }
+  .whiteButton:hover {
+    transform: scale(1.1);
+  }
+  .whiteButton:active {
+    transform: scale(0.9);
+  }
+  
+  .blueButton {
+    width: 140px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    background: #0a1f88;
+    color: white;
+    outline: none;
+    transition: 0.2s;
+  }
+  .blueButton:hover {
+    transform: scale(1.1);
+  }
+  .blueButton:active {
+    transform: scale(0.9);
+  }  
+
+/* ---------------------------------------------------------------------------- */
+
+.Auth-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+   
+    .Auth-container > h1 {
+      margin: 100px;
+      color: white;
+      font-weight: 400;
+      font-size: 50px;
+    }
+    
+    .Auth-container > main {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .Auth-container > main > aside > form{
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0 50px;
+    }
+    
+    .Auth-container > main > aside > form > button {
+      margin-top: 20px;
+    }
+    
+    .Auth-container > main > aside:last-child > form> button {
+      margin-top: 57px;
+    }
+    
+    .Auth-container > main > aside > form > input {
+      margin: 12px;
+    }
+  
+    .Auth-container > main > aside:last-child > form > input:first-child {
+      margin-top: 45px;
+    }
+  
+  /* ---------------------------------------------------------------------------- */
+
+  .Search-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.Search-container > form > h1 {
+    margin: 100px;
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+  }
+
+.Search-container > a {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-decoration: none;
+    color: #686868;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Search-container > form > input {
+    width: 580px;
+    height: 200px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    padding: 5px;
+    margin-top: -50px;
+    margin-bottom: 80px;
+  }
+
+  /* ---------------------------------------------------------------------------- */
+    
+  .Results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Results-container > h1 {
+    margin: 100px;
+    color: white;
+    font-weight: 400;
+    font-size: 50px;
+  }
+
+  .Results-container > a {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    text-decoration: none;
+    color: #686868;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.Results-container > .results {
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Results-container > .results > div {
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+  }
+  
+  .Results-container > .results > div > .item {
+    width: 300px;
+    height: 60px;
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    margin: 15px;
+  
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .Results-container > .results > div > .item > div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin-right: 10px;
+  }

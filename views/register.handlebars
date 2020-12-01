@@ -1,18 +1,5 @@
-<div class="forms">
+{{!-- <div class="forms">
     <form action="/register" method="POST">
-        {{!-- 
-            1)A label and an input are connected by an id(input) and a for(label)
-            2)The input [type] determines its functionality: text, password, email
-            3)[name] is for the naming the form <node /> for the backend API (also the widget (or "column names" in your db))
-            4)[value] is the actual string text
-            5)[placeholder] placeholder text
-            x)An input with a [type=submit] will submit the whole form
-              We can specify the type of request or [method] we want GET, POST, DELETE, PUT
-              and which route we want to go with [action]
-            
-            y)[name] attributes should have camelCase for consistency in js
-            z)bem methodology ./#blockName-elemName_modName_modVal
-            --}}
 
         <div class="errors">
             {{#each messages}}
@@ -30,18 +17,17 @@
         <label for="form-email">
             Email
         </label>
-        <input {{!-- type="email"  // Commented for assignment purposes --}} type="text" id="form-email" name="emailRegister"
-            placeholder="Email" autocomplete="off" value="{{ email }}" />
+        <input type="text" id="form-email" name="emailRegister" placeholder="Email" autocomplete="off"
+            value="{{ email }}" />
         <label for="form-password">
             Password
         </label>
-        <input id="form-password-register" type="password" name="passwordRegister" placeholder="Password"
-            {{!-- autocomplete="off" --}} />
+        <input id="form-password-register" type="password" name="passwordRegister" placeholder="Password" />
 
 
         <input id="form-submit" type="submit" value="SIGN UP" />
     </form>
-    
+
     <form action="/login" method="POST">
 
         <div class="errors">
@@ -53,15 +39,37 @@
         <label for="form-email">
             Email
         </label>
-        <input type="text" id="form-email-login" name="emailLogin" placeholder="Email" autocomplete="off" value="{{ email }}" />
+        <input type="text" name="emailLogin" placeholder="Email" autocomplete="off" value="{{ email }}" />
         <label for="form-password">
             Password
         </label>
-        <input id="form-password-login" type="password" name="passwordLogin" placeholder="Password" />
+        <input type="password" name="passwordLogin" placeholder="Password" />
 
-        <input id="login-button" type="submit" value="LOGIN" />
+        <button type="submit">aaa</button>
     </form>
+</div> --}}
 
+<div class="Auth-container">
+    <h1>Search it, Buy it!</h1>
+    <main>
+        <aside>
+            <form action="/register" method="POST">
+                <input class="fieldInput" name="username" placeholder="Username..." value="{{ uName }}"></input>
+                <input class="fieldInput" name="emailRegister" placeholder="Email..." value="{{ email }}"></input>
+                <input class="fieldInput" name="passwordRegister" type="password" placeholder="Password..."></input>
+
+                <button class="blueButton">Sign Up</button>
+            </form>
+        </aside>
+
+        <aside>
+            <form action="/login" method="POST">
+                <input class="fieldInput" name="emailLogin" placeholder="Username..." value="{{ email }}"></input>
+                <input class="fieldInput" type="password" name="passwordLogin" placeholder="Password..."></input>
+                <button class="whiteButton">Login</button>
+            </form>
+        </aside>
+    </main>
 </div>
 
 <script src="js/cookie.js" type="text/javascript"></script>
