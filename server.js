@@ -1,9 +1,22 @@
+// Dotenv
+require('dotenv').config()
+
 // Framework
 const express = require("express");
 const app = express();
 
-// Dotenv
-require('dotenv').config()
+const vision = require('@google-cloud/vision');
+
+const SerpApi = require('google-search-results-nodejs');
+const search = new SerpApi.EbaySearch(`${process.env.SA_KEY}`);
+
+
+
+// Creates a client
+const client = new vision.ImageAnnotatorClient({
+    keyFilename:'APIkey.json'
+});
+
 
 // Database
 const db = require('./database.js')
@@ -26,7 +39,7 @@ app.use(fileUpload());
 
 // Sessions
 const session = require("express-session");
-//const { Router } = require("express");
+
 
 // Cookie Parser
 
@@ -36,7 +49,7 @@ app.use(session({
     duration: 20 * 60 * 100, //duration Of current session
     activeDuration: 1/ 60/60 * 1000 // extension of the session 1 min per request
     }));
-
+    
 // Middleware
 
 function isLoggedIn(req,res,next){
@@ -51,7 +64,7 @@ app.get('/', (req, res) => {
     res.render('register')
 })
 
-app.get('/search', isLoggedIn, (req, res) => {
+app.get('/search',isLoggedIn,(req, res) => {
     res.render('home')
 })
 
@@ -61,25 +74,49 @@ app.get('/result', isLoggedIn,(req, res) => {
 
 
 
-app.post('/search', isLoggedIn, (req, res) => {
+app.post('/search',isLoggedIn, (req, res) => {
     if(!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded');
     }
     let sampleFile = req.files.file;
+    let labelsDesc;
     console.log(sampleFile)
     sampleFile.mv(`public/uploads/${sampleFile.name}`, (err) => {
         if (err) {
             return res.status(500).send(err)
+        }else{
+            let bigString = " ";
+            client
+            .labelDetection(`public/uploads/${sampleFile.name}`)
+            .then(results =>{
+                const labels = results[0].labelAnnotations;
+                console.log('Labels: ');
+                labelsDesc = labels.map(label => (label.description));
+                for(let key in labelsDesc){
+                    bigString += `${labelsDesc[key]}`
+                    bigString += " ";
+                }
+                const params = {
+                    engine: "ebay",
+                    ebay_domain: "ebay.com",
+                    q: bigString,
+                    _nkw: bigString
+                };
+
+                const callback = function(data) {
+                    data = data.organic_results.slice(0,10)
+                    console.log(data)
+                    res.render('result',{apiData:data});
+                };
+
+// Show result as JSON
+                search.json(params, callback);
+            })
+           
         }
+
     })
 
-    //ejemplo
-    // let reverseAPIdata = reverseAPIcall(sampleFile);
-
-    // res.render('result', {
-    //     data: reverseAPIdata,
-    // })
-    res.render('result')
 })
 
 app.get('/register', (req, res) => {
@@ -207,7 +244,6 @@ app.get("/logout", function(req, res) {
     req.session.destroy()
     res.redirect("/register")
 });
-
 
 
 

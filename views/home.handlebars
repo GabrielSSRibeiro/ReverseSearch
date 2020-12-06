@@ -1,33 +1,30 @@
-{{!-- <div id="drop-area">
+<nav>
+    <div class="logout-button">
+        <a href="/logout">
+            LOGOUT
+        </a>
+    </div>
+</nav>
+<h1>Search it, Buy it!</h1>
+<div class="search-container">
+    <div id="drop-area">
 
-    <form id="uploadForm" method="post" enctype="multipart/form-data" class="my-form" action="/search" ref="uploadForm">
-        <label for="form-input">
-            Search it, Buy it!
-        </label>
-        <input type="file" class="form-input" id="file-pb" name="file" onchange="handleFiles(files)">
+        <form id="uploadForm" method="post" enctype="multipart/form-data" class="search-form" action="/search"
+            ref="uploadForm">
+            <label for="form-input">
+                Search it, Buy it!
+            </label>
+            <input type="file" class="form-input" id="file-pb" name="file" onchange="handleFiles(files)">
 
-        <div id="gallery"></div>
+            <div id="gallery"></div>
 
-        <input class="form-button" type="submit" value="Upload">
+            <input class="form-button-search" type="submit" value="Upload">
 
-    </form>
+        </form>
 
-</div> --}}
+    </div>
 
-<div class="Search-container">
-    <a href="/logout" class="whiteButton">Logout</a>
-    {{!-- <button class="whiteButton">
-        Logout
-    </button> --}}
-
-    <form id="uploadForm" method="post" enctype="multipart/form-data" class="my-form" action="/search" ref="uploadForm">
-        <h1>Search it, Buy it!</h1>
-
-        <input type="file" name="file" onchange="handleFiles(files)"></input>
-        <button class="whiteButton">
-            Search!
-        </button>
-    </form>
 </div>
+
 
 <script src="js/dragndrop.js" type="text/javascript"></script>
