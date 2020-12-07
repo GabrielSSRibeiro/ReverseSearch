@@ -21,6 +21,7 @@
     "@google-cloud/storage": "^5.6.0",
     "@google-cloud/vision": "^2.1.2",
     "bcryptjs": "^2.4.3",
+    "chromedriver": "^87.0.2",
     "client-sessions": "^0.8.0",
     "cloudsight": "^1.1.3",
     "cookie-parser": "^1.4.5",
@@ -30,7 +31,8 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "google-search-results-nodejs": "^2.0.1",
-    "mongoose": "^5.10.17"
+    "mongoose": "^5.10.17",
+    "selenium-webdriver": "^4.0.0-alpha.8"
   },
   "devDependencies": {
     "jest": "^26.6.3",
