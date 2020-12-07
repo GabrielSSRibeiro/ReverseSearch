@@ -28,7 +28,7 @@ app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
 // Static Directory
-app.use(express.static("public"));
+app.use(express.static("client/public"));
 
 // Body Parser
 const bodyParser = require("body-parser");
@@ -81,12 +81,12 @@ app.post("/search", isLoggedIn, (req, res) => {
   let sampleFile = req.files.file;
   let labelsDesc;
   console.log(sampleFile);
-  sampleFile.mv(`public/uploads/${sampleFile.name}`, (err) => {
+  sampleFile.mv(`client/public/uploads/${sampleFile.name}`, (err) => {
     if (err) {
       return res.status(500).send(err);
     } else {
       let bigString = " ";
-      client.labelDetection(`public/uploads/${sampleFile.name}`).then((results) => {
+      client.labelDetection(`client/public/uploads/${sampleFile.name}`).then((results) => {
         const labels = results[0].labelAnnotations;
         console.log("Labels: ");
         labelsDesc = labels.map((label) => label.description);
