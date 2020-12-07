@@ -52,22 +52,22 @@ app.use(
 
 function isLoggedIn(req, res, next) {
   if (!req.session.user) {
-    res.redirect("/register");
+    res.redirect("/authPage");
   } else {
     next();
   }
 }
 
 app.get("/", (req, res) => {
-  res.render("register");
+  res.render("authPage");
 });
 
-app.get("/search", isLoggedIn, (req, res) => {
-  res.render("home");
+app.get("/searchPage", isLoggedIn, (req, res) => {
+  res.render("searchPage");
 });
 
-app.get("/result", isLoggedIn, (req, res) => {
-  res.render("result");
+app.get("/resultsPage", isLoggedIn, (req, res) => {
+  res.render("resultsPage");
 });
 
 app.post("/search", isLoggedIn, (req, res) => {
@@ -100,7 +100,7 @@ app.post("/search", isLoggedIn, (req, res) => {
         const callback = function (data) {
           data = data.organic_results.slice(0, 10);
           console.log(data);
-          res.render("result", { apiData: data });
+          res.render("resultsPage", { apiData: data });
         };
 
         // Show result as JSON
@@ -110,8 +110,8 @@ app.post("/search", isLoggedIn, (req, res) => {
   });
 });
 
-app.get("/register", (req, res) => {
-  res.render("register");
+app.get("/authPage", (req, res) => {
+  res.render("authPage");
 });
 
 app.post("/register", (req, res) => {
@@ -156,7 +156,7 @@ app.post("/register", (req, res) => {
   }
 
   if (errors.messages.length > 0) {
-    res.render("register", errors);
+    res.render("authPage", errors);
     console.log(errors.messages);
   } else {
     db.addUser(req.body)
@@ -166,7 +166,7 @@ app.post("/register", (req, res) => {
       })
       .catch((err) => {
         console.log(`Error adding user ${err}`);
-        res.redirect("/register");
+        res.redirect("/authPage");
       });
   }
 });
@@ -204,7 +204,7 @@ app.post("/login", (req, res) => {
   }
 
   if (errors.messages.length > 0) {
-    res.render("register", errors);
+    res.render("authPage", errors);
     console.log(errors.messages);
   } else {
     db.validateUser(req.body)
@@ -213,7 +213,7 @@ app.post("/login", (req, res) => {
         req.session.user = data[0];
         console.log(req.session.user);
 
-        res.render("home", {
+        res.render("searchPage", {
           data: req.session.user,
         });
         //res.redirect("/", {
@@ -222,14 +222,18 @@ app.post("/login", (req, res) => {
       })
       .catch((err) => {
         console.log(err);
-        res.redirect("/register");
+        res.redirect("/authPage");
       });
   }
 });
 
 app.get("/logout", function (req, res) {
   req.session.destroy();
-  res.redirect("/register");
+  res.redirect("/authPage");
+});
+
+app.get("/searchOther", function (req, res) {
+  res.redirect("/searchPage");
 });
 
 const PORT = process.env.PORT;
