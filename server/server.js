@@ -19,6 +19,10 @@ const client = new vision.ImageAnnotatorClient({
 const db = require("./repository/database.js");
 
 // Handlebars | Template Engine
+const pathToHere = __dirname;
+const slicedPath = pathToHere.slice(0, pathToHere.length - 7);
+app.set("views", slicedPath + "\\client\\views");
+
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
