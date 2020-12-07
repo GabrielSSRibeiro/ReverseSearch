@@ -102,9 +102,13 @@ app.post("/search", isLoggedIn, (req, res) => {
         };
 
         const callback = function (data) {
-          data = data.organic_results.slice(0, 10);
-          console.log(data);
-          res.render("resultsPage", { apiData: data });
+          if (data && data.organic_results) {
+            data = data.organic_results.slice(0, 10);
+            console.log(data);
+            res.render("resultsPage", { apiData: data });
+          } else {
+            console.log("No matches found");
+          }
         };
 
         // Show result as JSON
