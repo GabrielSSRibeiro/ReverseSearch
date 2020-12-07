@@ -16,7 +16,7 @@ const client = new vision.ImageAnnotatorClient({
 });
 
 // Database
-const db = require("./database.js");
+const db = require("./repository/database.js");
 
 // Handlebars | Template Engine
 const exphbs = require("express-handlebars");
