@@ -33,6 +33,17 @@ label {
     font-weight: bold;
     font-size: 1.2em;
 }
+
+.outputImage{
+    height: 100px;
+    width: 100px;
+    border: none;
+}
+
+.outputImageLabel{
+    display: none;
+}
+
 .form-input {
     margin: 10px 0;
     height: 30px;

@@ -1,7 +1,7 @@
 <nav>
     <div class="logout-button">
         <a href="/logout">
-            LOGOUT
+            Logout
         </a>
     </div>
 </nav>
@@ -14,9 +14,11 @@
             <label for="form-input">
                 Search it, Buy it!
             </label>
-            <input type="file" class="form-input" id="file-pb" name="file" onchange="handleFiles(files)">
+            <input type="file" class="form-input" id="file-pb" name="file"
+                onchange="handleFiles(files), loadFile(event)">
+            <img class="outputImage" id="output" />
 
-            <div id="gallery"></div>
+            <div class="outputImageLabel" id="gallery"></div>
 
             <input class="form-button-search" type="submit" value="Upload">
 
