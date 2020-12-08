@@ -8,7 +8,7 @@ Once node.js is installed open the command line and traverse to the ReverseSearc
 Run the command npm install, to download all the dependencies.
 
 ## Running the code
-Once all dependencies are installed, use the command node server.js or npm start, to run the server.
+Once all dependencies are installed, use the command npm start, to run the server.
 Server port is defaulted to 3000, on your web browser, put localhost:3000.
 
 ## Using the website
